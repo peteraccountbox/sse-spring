@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p>Demo</p>
+
+<div id="msg"></div>
+<script>
+  var source = new EventSource('/sse-emitter?name=Test&data=Welcome');
+  source.onmessage = function(evt) {
+      document.getElementById("msg").innerHTML+=evt.data;
+//    console.log(evt);
+  };
+
+  source.onerror = function (ev) {
+      source.close();
+  }
+</script>
+</body>
+</html>
